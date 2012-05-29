@@ -13,6 +13,11 @@ namespace KissDTO.UnitTests
         public string Surname { get; set; }
     }
 
+    class PersonWithCompleteNestedsDTO
+    {
+        public Location Residence { get; set; }
+    }
+
     [TestClass]
     public class KissDTOTests
     {
@@ -33,6 +38,29 @@ namespace KissDTO.UnitTests
             //assert
             Assert.AreEqual(somePerson.Firstname, dtoMapped.Firstname);
             Assert.AreEqual(somePerson.Surname, dtoMapped.Surname);
+        }
+
+        [TestMethod]
+        public void ShouldMapNestedObjectsWithoutDTOs()
+        {
+            //arrange
+            var somePerson = new Person
+            {
+                Residence = new Location
+                {
+                    Name = "Bolzano",
+                    Nation = new Nation
+                    {
+                         Name = "Italy"
+                    }
+                }
+            };
+
+            //act
+            PersonWithCompleteNestedsDTO dtoMapped = somePerson.CopyValues<PersonWithCompleteNestedsDTO>() as PersonWithCompleteNestedsDTO;
+
+            //assert
+            Assert.IsNotNull(dtoMapped.Residence.Nation);
         }
 
     }
