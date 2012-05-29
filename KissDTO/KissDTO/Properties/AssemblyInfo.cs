@@ -34,3 +34,12 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.0.1.0")]
 //[assembly: AssemblyFileVersion("1.0.0.0")]
+
+/*
+ * Version History:
+ * ---------------------
+ * 
+ * v0.0.1
+ * 1st release
+ * 
+*/
