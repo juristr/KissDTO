@@ -11,15 +11,14 @@ namespace KissDTO
 {
     public static class KissDTO
     {
-
         private static readonly Hashtable createInstanceInvokers = new Hashtable();
         private delegate object CreateInstanceInvoker();
         private static readonly Hashtable getAndSetValuesInvokers = new Hashtable();
         private delegate void GetSetValuesInvoker(object source, object target);
 
-        public static object CopyValues<TDestination>(this object obj)
+        public static TDestination CopyValues<TDestination>(this object obj) where TDestination : class
         {
-            var instance = FastCreateInstance(typeof(TDestination));
+            var instance = FastCreateInstance(typeof(TDestination)) as TDestination;
             obj.GetType().GetProperties().FastCopyValues(obj, instance);
 
             return instance;
