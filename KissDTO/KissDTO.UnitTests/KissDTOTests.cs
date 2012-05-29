@@ -33,7 +33,7 @@ namespace KissDTO.UnitTests
             };
 
             //act
-            var dtoMapped = somePerson.CopyValues<SimplePersonDTO>();
+            var dtoMapped = somePerson.As<SimplePersonDTO>();
 
             //assert
             Assert.AreEqual(somePerson.Firstname, dtoMapped.Firstname);
@@ -57,7 +57,7 @@ namespace KissDTO.UnitTests
             };
 
             //act
-            var dtoMapped = somePerson.CopyValues<PersonWithCompleteNestedsDTO>();
+            var dtoMapped = somePerson.As<PersonWithCompleteNestedsDTO>();
 
             //assert
             Assert.IsNotNull(dtoMapped.Residence.Nation);

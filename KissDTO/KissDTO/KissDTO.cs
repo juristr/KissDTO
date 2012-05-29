@@ -16,7 +16,7 @@ namespace KissDTO
         private static readonly Hashtable getAndSetValuesInvokers = new Hashtable();
         private delegate void GetSetValuesInvoker(object source, object target);
 
-        public static TDestination CopyValues<TDestination>(this object obj) where TDestination : class
+        public static TDestination As<TDestination>(this object obj) where TDestination : class
         {
             var instance = FastCreateInstance(typeof(TDestination)) as TDestination;
             obj.GetType().GetProperties().FastCopyValues(obj, instance);
